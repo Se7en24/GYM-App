@@ -78,9 +78,14 @@ namespace GYM_YOUTUBE
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Login log = new Login();
-            log.Show();
+            FrontPage frontPage = new FrontPage();
+            frontPage.Show();
             this.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

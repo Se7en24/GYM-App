@@ -71,8 +71,8 @@ namespace GYM_YOUTUBE
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Login log = new Login();
-            log.Show();
+            FrontPage frontpage = new FrontPage();
+            frontpage.Show();
             this.Hide();
         }
 
@@ -92,6 +92,31 @@ namespace GYM_YOUTUBE
                     SqlCommand cmd = new SqlCommand(query, Con);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Sucessfully deleted ");
+                    Con.Close();
+                    populate();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (key == 0 || Nametb.Text == "" || Phonetb.Text=="" || Agetb.Text=="" || Amounttb.Text=="" || GenderCb.Text=="")
+            {
+                MessageBox.Show("Missing Information");
+            }
+            else
+            {
+                try
+                {
+                    Con.Open();
+                    string query = "update Membertbl set MName = '" + Nametb.Text + "', MPhone = '" + Phonetb.Text + "',MGen = '" + GenderCb.Text + "',MAge = '" + Agetb.Text + "',MAmount ='" + Amounttb.Text + "'where Mid ="+key+";";
+                    SqlCommand cmd = new SqlCommand(query, Con);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Sucessfully Updated ");
                     Con.Close();
                     populate();
                 }

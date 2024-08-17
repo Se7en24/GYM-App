@@ -199,6 +199,7 @@
             button4.TabIndex = 43;
             button4.Text = "Back";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // label7
             // 

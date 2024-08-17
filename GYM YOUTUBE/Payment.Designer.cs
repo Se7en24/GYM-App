@@ -31,17 +31,17 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            textBox2 = new TextBox();
+            Amounttb = new TextBox();
             label5 = new Label();
-            textBox1 = new TextBox();
             label4 = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            Period = new DateTimePicker();
             label6 = new Label();
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            NameCb = new ComboBox();
+            Paymentlist = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)Paymentlist).BeginInit();
             SuspendLayout();
             // 
             // label3
@@ -72,14 +72,14 @@
             label1.TabIndex = 8;
             label1.Text = "Koovapally Fitness";
             // 
-            // textBox2
+            // Amounttb
             // 
-            textBox2.Font = new Font("Segoe UI", 19.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.ForeColor = Color.OliveDrab;
-            textBox2.Location = new Point(115, 719);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(354, 78);
-            textBox2.TabIndex = 27;
+            Amounttb.Font = new Font("Segoe UI", 19.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Amounttb.ForeColor = Color.OliveDrab;
+            Amounttb.Location = new Point(115, 719);
+            Amounttb.Name = "Amounttb";
+            Amounttb.Size = new Size(354, 78);
+            Amounttb.TabIndex = 27;
             // 
             // label5
             // 
@@ -91,31 +91,22 @@
             label5.TabIndex = 26;
             label5.Text = "Amount";
             // 
-            // textBox1
-            // 
-            textBox1.Font = new Font("Segoe UI", 19.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.ForeColor = Color.OliveDrab;
-            textBox1.Location = new Point(115, 537);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(354, 78);
-            textBox1.TabIndex = 25;
-            // 
             // label4
             // 
             label4.FlatStyle = FlatStyle.Popup;
             label4.Font = new Font("Berlin Sans FB", 13.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(115, 481);
+            label4.Location = new Point(106, 480);
             label4.Name = "label4";
             label4.Size = new Size(411, 88);
             label4.TabIndex = 24;
             label4.Text = "Member Name :";
             // 
-            // dateTimePicker1
+            // Period
             // 
-            dateTimePicker1.Location = new Point(115, 383);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(354, 39);
-            dateTimePicker1.TabIndex = 28;
+            Period.Location = new Point(115, 383);
+            Period.Name = "Period";
+            Period.Size = new Size(354, 39);
+            Period.TabIndex = 28;
             // 
             // label6
             // 
@@ -137,6 +128,7 @@
             button3.TabIndex = 35;
             button3.Text = "Back";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -148,6 +140,7 @@
             button2.TabIndex = 34;
             button2.Text = "Reset";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -159,31 +152,42 @@
             button1.TabIndex = 33;
             button1.Text = "Pay";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
-            // dataGridView1
+            // NameCb
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(664, 322);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 82;
-            dataGridView1.Size = new Size(1357, 738);
-            dataGridView1.TabIndex = 36;
+            NameCb.Font = new Font("Segoe UI", 19.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            NameCb.FormattingEnabled = true;
+            NameCb.Items.AddRange(new object[] { "Male ", "Female" });
+            NameCb.Location = new Point(115, 547);
+            NameCb.Name = "NameCb";
+            NameCb.Size = new Size(354, 79);
+            NameCb.TabIndex = 41;
+            // 
+            // Paymentlist
+            // 
+            Paymentlist.BackgroundColor = Color.White;
+            Paymentlist.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Paymentlist.Location = new Point(737, 213);
+            Paymentlist.Name = "Paymentlist";
+            Paymentlist.RowHeadersWidth = 82;
+            Paymentlist.Size = new Size(1295, 833);
+            Paymentlist.TabIndex = 59;
             // 
             // Payment
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2127, 1405);
-            Controls.Add(dataGridView1);
+            Controls.Add(Paymentlist);
+            Controls.Add(NameCb);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label6);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(textBox2);
+            Controls.Add(Period);
+            Controls.Add(Amounttb);
             Controls.Add(label5);
-            Controls.Add(textBox1);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -192,7 +196,8 @@
             Name = "Payment";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Payment";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += Payment_Load;
+            ((System.ComponentModel.ISupportInitialize)Paymentlist).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -202,15 +207,15 @@
         private Label label3;
         private Label label2;
         private Label label1;
-        private TextBox textBox2;
+        private TextBox Amounttb;
         private Label label5;
-        private TextBox textBox1;
         private Label label4;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker Period;
         private Label label6;
         private Button button3;
         private Button button2;
         private Button button1;
-        private DataGridView dataGridView1;
+        private ComboBox NameCb;
+        private DataGridView Paymentlist;
     }
 }
