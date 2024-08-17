@@ -36,8 +36,8 @@
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            MembersList = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)MembersList).BeginInit();
             SuspendLayout();
             // 
             // label3
@@ -48,6 +48,7 @@
             label3.Size = new Size(55, 88);
             label3.TabIndex = 7;
             label3.Text = "X";
+            label3.Click += label3_Click;
             // 
             // label2
             // 
@@ -118,23 +119,24 @@
             button3.TabIndex = 39;
             button3.Text = "Back";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
-            // dataGridView1
+            // MembersList
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(330, 343);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 82;
-            dataGridView1.Size = new Size(1314, 833);
-            dataGridView1.TabIndex = 55;
+            MembersList.BackgroundColor = Color.White;
+            MembersList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            MembersList.Location = new Point(330, 343);
+            MembersList.Name = "MembersList";
+            MembersList.RowHeadersWidth = 82;
+            MembersList.Size = new Size(1295, 833);
+            MembersList.TabIndex = 55;
             // 
             // ViewMember
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2127, 1405);
-            Controls.Add(dataGridView1);
+            Controls.Add(MembersList);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -147,7 +149,8 @@
             Name = "ViewMember";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ViewMember";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += ViewMember_Load;
+            ((System.ComponentModel.ISupportInitialize)MembersList).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -162,6 +165,6 @@
         private Button button1;
         private Button button2;
         private Button button3;
-        private DataGridView dataGridView1;
+        private DataGridView MembersList;
     }
 }
