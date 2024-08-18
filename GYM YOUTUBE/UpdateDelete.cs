@@ -39,6 +39,7 @@ namespace GYM_YOUTUBE
         }
         private void UpdateDelete_Load(object sender, EventArgs e)
         {
+            MembersList.ReadOnly = true;
             populate();
         }
         int key = 0;

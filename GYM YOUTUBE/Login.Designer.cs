@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            textBox1 = new TextBox();
+            userid = new TextBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
-            textBox2 = new TextBox();
+            pswd = new TextBox();
             button1 = new Button();
             button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -62,27 +62,26 @@
             label1.Text = "Koovapally Fitness";
             label1.Click += label1_Click;
             // 
-            // textBox1
+            // userid
             // 
-            textBox1.BackColor = Color.White;
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Old Antic Outline", 16.125F, FontStyle.Bold, GraphicsUnit.Point, 178);
-            textBox1.Location = new Point(691, 213);
-            textBox1.Margin = new Padding(5);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(450, 90);
-            textBox1.TabIndex = 2;
-            textBox1.TextChanged += textBox1_TextChanged;
+            userid.BackColor = Color.White;
+            userid.BorderStyle = BorderStyle.FixedSingle;
+            userid.Font = new Font("Old Antic Outline", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            userid.Location = new Point(691, 223);
+            userid.Margin = new Padding(5);
+            userid.Name = "userid";
+            userid.Size = new Size(450, 64);
+            userid.TabIndex = 2;
+            userid.TextChanged += textBox1_TextChanged;
             // 
             // pictureBox2
             // 
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox2.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox2.Location = new Point(1149, 213);
+            pictureBox2.Location = new Point(1149, 223);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(110, 90);
+            pictureBox2.Size = new Size(110, 64);
             pictureBox2.TabIndex = 3;
             pictureBox2.TabStop = false;
             // 
@@ -93,19 +92,19 @@
             pictureBox3.BorderStyle = BorderStyle.FixedSingle;
             pictureBox3.Location = new Point(1149, 352);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(110, 90);
+            pictureBox3.Size = new Size(110, 64);
             pictureBox3.TabIndex = 5;
             pictureBox3.TabStop = false;
             // 
-            // textBox2
+            // pswd
             // 
-            textBox2.Font = new Font("Old Antic Outline", 16.125F, FontStyle.Regular, GraphicsUnit.Point, 178);
-            textBox2.Location = new Point(691, 352);
-            textBox2.Margin = new Padding(5);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(450, 90);
-            textBox2.TabIndex = 4;
+            pswd.Font = new Font("Old Antic Outline", 10.125F, FontStyle.Regular, GraphicsUnit.Point, 178);
+            pswd.Location = new Point(691, 352);
+            pswd.Margin = new Padding(5);
+            pswd.Name = "pswd";
+            pswd.PasswordChar = '*';
+            pswd.Size = new Size(450, 64);
+            pswd.TabIndex = 4;
             // 
             // button1
             // 
@@ -115,6 +114,7 @@
             button1.TabIndex = 6;
             button1.Text = "Login";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -124,6 +124,7 @@
             button2.TabIndex = 7;
             button2.Text = "Reset";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // Login
             // 
@@ -134,9 +135,9 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(pictureBox3);
-            Controls.Add(textBox2);
+            Controls.Add(pswd);
             Controls.Add(pictureBox2);
-            Controls.Add(textBox1);
+            Controls.Add(userid);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Name = "Login";
@@ -152,10 +153,10 @@
 
         private PictureBox pictureBox1;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox userid;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
-        private TextBox textBox2;
+        private TextBox pswd;
         private Button button1;
         private Button button2;
     }

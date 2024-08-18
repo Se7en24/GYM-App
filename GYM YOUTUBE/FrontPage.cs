@@ -32,5 +32,19 @@
             payment.Show();
             this.Hide();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ViewMember member = new ViewMember();
+            member.Show();
+            this.Hide();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+         this.Hide();
+        }
     }
 }

@@ -34,6 +34,8 @@
             button2 = new Button();
             button4 = new Button();
             panel1 = new Panel();
+            button3 = new Button();
+            button5 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -71,7 +73,7 @@
             button2.FlatStyle = FlatStyle.Popup;
             button2.Font = new Font("Poppins", 19.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.OliveDrab;
-            button2.Location = new Point(30, 370);
+            button2.Location = new Point(30, 506);
             button2.Name = "button2";
             button2.Size = new Size(482, 123);
             button2.TabIndex = 2;
@@ -86,7 +88,7 @@
             button4.FlatStyle = FlatStyle.Popup;
             button4.Font = new Font("Poppins", 19.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.OliveDrab;
-            button4.Location = new Point(30, 543);
+            button4.Location = new Point(30, 648);
             button4.Name = "button4";
             button4.Size = new Size(482, 123);
             button4.TabIndex = 4;
@@ -98,6 +100,8 @@
             // 
             panel1.BackColor = Color.Peru;
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(button5);
+            panel1.Controls.Add(button3);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(button4);
             panel1.Controls.Add(button1);
@@ -105,6 +109,36 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(534, 1255);
             panel1.TabIndex = 5;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.SeaShell;
+            button3.BackgroundImageLayout = ImageLayout.None;
+            button3.FlatStyle = FlatStyle.Popup;
+            button3.Font = new Font("Poppins", 19.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button3.ForeColor = Color.OliveDrab;
+            button3.Location = new Point(30, 351);
+            button3.Name = "button3";
+            button3.Size = new Size(482, 123);
+            button3.TabIndex = 5;
+            button3.Text = "View Member";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
+            // button5
+            // 
+            button5.BackColor = Color.SeaShell;
+            button5.BackgroundImageLayout = ImageLayout.None;
+            button5.FlatStyle = FlatStyle.Popup;
+            button5.Font = new Font("Poppins", 19.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button5.ForeColor = Color.OliveDrab;
+            button5.Location = new Point(126, 1108);
+            button5.Name = "button5";
+            button5.Size = new Size(284, 98);
+            button5.TabIndex = 6;
+            button5.Text = "Logoff";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // FrontPage
             // 
@@ -129,5 +163,7 @@
         private Button button2;
         private Button button4;
         private Panel panel1;
+        private Button button3;
+        private Button button5;
     }
 }

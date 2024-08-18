@@ -31,7 +31,7 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            textBox1 = new TextBox();
+            Searchname = new TextBox();
             label4 = new Label();
             button1 = new Button();
             button2 = new Button();
@@ -68,14 +68,14 @@
             label1.TabIndex = 5;
             label1.Text = "Koovapally Fitness";
             // 
-            // textBox1
+            // Searchname
             // 
-            textBox1.Font = new Font("Segoe UI", 19.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.ForeColor = Color.OliveDrab;
-            textBox1.Location = new Point(705, 243);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(354, 78);
-            textBox1.TabIndex = 36;
+            Searchname.Font = new Font("Segoe UI", 19.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Searchname.ForeColor = Color.OliveDrab;
+            Searchname.Location = new Point(705, 243);
+            Searchname.Name = "Searchname";
+            Searchname.Size = new Size(354, 78);
+            Searchname.TabIndex = 36;
             // 
             // label4
             // 
@@ -97,6 +97,7 @@
             button1.TabIndex = 37;
             button1.Text = "Search";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -108,6 +109,7 @@
             button2.TabIndex = 38;
             button2.Text = "Reset";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -140,7 +142,7 @@
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(textBox1);
+            Controls.Add(Searchname);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -160,7 +162,7 @@
         private Label label3;
         private Label label2;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox Searchname;
         private Label label4;
         private Button button1;
         private Button button2;

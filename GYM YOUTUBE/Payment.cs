@@ -43,7 +43,11 @@ namespace GYM_YOUTUBE
         private void populate()
         {
             Con.Open();
-            string query = "select * from Paymentstbl";
+            string query = @"
+            SELECT P.PId, P.PMonth, M.MName as PMember, P.PAmount 
+            FROM Paymentstbl P
+            JOIN Membertbl M ON P.PMember = M.Mid";
+
             SqlDataAdapter sda = new SqlDataAdapter(query, Con);
             SqlCommandBuilder builder = new SqlCommandBuilder();
             var ds = new DataSet();
@@ -51,6 +55,40 @@ namespace GYM_YOUTUBE
             Paymentlist.DataSource = ds.Tables[0];
             Con.Close();
         }
+
+        private void filterbyname()
+        {
+            if (string.IsNullOrWhiteSpace(SearchName.Text))
+            {
+                MessageBox.Show("Please enter a name to search.");
+                return;
+            }
+
+            Con.Open();
+
+            // Use parameterized query to prevent SQL injection
+            string query = @"
+            SELECT P.PId, P.PMonth, M.MName as PMember, P.PAmount 
+            FROM Paymentstbl P
+            JOIN Membertbl M ON P.PMember = M.Mid
+            WHERE M.MName LIKE @searchName";
+            SqlCommand cmd = new SqlCommand(query, Con);
+            cmd.Parameters.AddWithValue("@searchName", "%" + SearchName.Text.Trim() + "%");
+
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+
+            Paymentlist.DataSource = dt;
+            Con.Close();
+
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("No records found for the entered name.");
+            }
+        }
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -68,8 +106,10 @@ namespace GYM_YOUTUBE
 
         private void Payment_Load(object sender, EventArgs e)
         {
+            Paymentlist.ReadOnly = true;
             FillName();
             populate();
+            
         }
 
         int key = 1;
@@ -96,7 +136,7 @@ namespace GYM_YOUTUBE
                 else
                 {
                     // Corrected INSERT query
-                    string query = "insert into Paymentstbl (PMonth, PMember, PAmount) values('" + payPeriod + "','" + NameCb.SelectedValue.ToString() + "'," + Amounttb.Text + ")";
+                    string query = "insert into Paymentstbl (PMonth, PMember, PAmount) values('" + payPeriod + "','" + NameCb.Text + "'," + Amounttb.Text + ")";
                     SqlCommand cmd = new SqlCommand(query, Con);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Amount paid successfully");
@@ -107,6 +147,16 @@ namespace GYM_YOUTUBE
             }
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            filterbyname();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            populate();
+            SearchName.Text = "";
+        }
 
     }
 }

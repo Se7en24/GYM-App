@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
@@ -41,6 +42,9 @@
             button1 = new Button();
             NameCb = new ComboBox();
             Paymentlist = new DataGridView();
+            SearchName = new TextBox();
+            button4 = new Button();
+            button5 = new Button();
             ((System.ComponentModel.ISupportInitialize)Paymentlist).BeginInit();
             SuspendLayout();
             // 
@@ -57,7 +61,7 @@
             // label2
             // 
             label2.Font = new Font("Poppins SemiBold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(834, 112);
+            label2.Location = new Point(917, 112);
             label2.Name = "label2";
             label2.Size = new Size(400, 88);
             label2.TabIndex = 9;
@@ -66,7 +70,7 @@
             // label1
             // 
             label1.Font = new Font("Poppins SemiBold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(720, 24);
+            label1.Location = new Point(803, 24);
             label1.Name = "label1";
             label1.Size = new Size(536, 88);
             label1.TabIndex = 8;
@@ -166,19 +170,68 @@
             // 
             // Paymentlist
             // 
+            Paymentlist.AllowUserToAddRows = false;
+            Paymentlist.AllowUserToDeleteRows = false;
+            Paymentlist.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Paymentlist.BackgroundColor = Color.White;
+            Paymentlist.BorderStyle = BorderStyle.Fixed3D;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.OrangeRed;
+            dataGridViewCellStyle1.SelectionForeColor = Color.LightGreen;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            Paymentlist.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             Paymentlist.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            Paymentlist.Location = new Point(737, 213);
+            Paymentlist.GridColor = SystemColors.HotTrack;
+            Paymentlist.Location = new Point(872, 332);
             Paymentlist.Name = "Paymentlist";
             Paymentlist.RowHeadersWidth = 82;
-            Paymentlist.Size = new Size(1295, 833);
+            Paymentlist.Size = new Size(887, 833);
             Paymentlist.TabIndex = 59;
+            // 
+            // SearchName
+            // 
+            SearchName.Font = new Font("Segoe UI", 19.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SearchName.ForeColor = Color.OliveDrab;
+            SearchName.Location = new Point(917, 248);
+            SearchName.Name = "SearchName";
+            SearchName.Size = new Size(354, 78);
+            SearchName.TabIndex = 60;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.DarkSeaGreen;
+            button4.ForeColor = Color.Black;
+            button4.Location = new Point(1308, 248);
+            button4.Name = "button4";
+            button4.Size = new Size(208, 78);
+            button4.TabIndex = 61;
+            button4.Text = "Search";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            // 
+            // button5
+            // 
+            button5.BackColor = Color.DarkSeaGreen;
+            button5.ForeColor = Color.Black;
+            button5.Location = new Point(1540, 248);
+            button5.Name = "button5";
+            button5.Size = new Size(208, 78);
+            button5.TabIndex = 62;
+            button5.Text = "Refresh";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // Payment
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2127, 1405);
+            Controls.Add(button5);
+            Controls.Add(button4);
+            Controls.Add(SearchName);
             Controls.Add(Paymentlist);
             Controls.Add(NameCb);
             Controls.Add(button3);
@@ -217,5 +270,8 @@
         private Button button1;
         private ComboBox NameCb;
         private DataGridView Paymentlist;
+        private TextBox SearchName;
+        private Button button4;
+        private Button button5;
     }
 }
