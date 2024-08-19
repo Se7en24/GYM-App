@@ -6,8 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using System.Windows.Forms;
 using System.Data.SqlClient;
+
 
 namespace GYM_YOUTUBE
 {
@@ -44,7 +46,8 @@ namespace GYM_YOUTUBE
         {
             Con.Open();
             string query = @"
-            SELECT P.PId, P.PMonth, M.MName as PMember, P.PAmount 
+            SELECT   
+            P.PId, P.PMonth, M.MName as PMember, P.PAmount 
             FROM Paymentstbl P
             JOIN Membertbl M ON P.PMember = M.Mid";
 
@@ -52,6 +55,7 @@ namespace GYM_YOUTUBE
             SqlCommandBuilder builder = new SqlCommandBuilder();
             var ds = new DataSet();
             sda.Fill(ds);
+
             Paymentlist.DataSource = ds.Tables[0];
             Con.Close();
         }
@@ -68,10 +72,10 @@ namespace GYM_YOUTUBE
 
             // Use parameterized query to prevent SQL injection
             string query = @"
-            SELECT P.PId, P.PMonth, M.MName as PMember, P.PAmount 
-            FROM Paymentstbl P
-            JOIN Membertbl M ON P.PMember = M.Mid
-            WHERE M.MName LIKE @searchName";
+    SELECT P.PId, P.PMonth, M.MName as PMember, P.PAmount 
+    FROM Paymentstbl P
+    JOIN Membertbl M ON P.PMember = M.Mid
+    WHERE M.MName LIKE @searchName";
             SqlCommand cmd = new SqlCommand(query, Con);
             cmd.Parameters.AddWithValue("@searchName", "%" + SearchName.Text.Trim() + "%");
 
@@ -90,13 +94,15 @@ namespace GYM_YOUTUBE
 
 
 
+
         private void button2_Click(object sender, EventArgs e)
         {
             //Nametb.Text = "";
             Amounttb.Text = "";
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs
+ e)
         {
             FrontPage frontPage = new FrontPage();
             frontPage.Show();
@@ -109,7 +115,6 @@ namespace GYM_YOUTUBE
             Paymentlist.ReadOnly = true;
             FillName();
             populate();
-            
         }
 
         int key = 1;
@@ -124,20 +129,30 @@ namespace GYM_YOUTUBE
                 string payPeriod = Period.Value.Month.ToString() + Period.Value.Year.ToString();
                 Con.Open();
 
-                // Corrected query to check for existing payment
-                SqlDataAdapter sda = new SqlDataAdapter("select count(*) from Paymentstbl where PMember = '" + NameCb.SelectedValue.ToString() + "' and PMonth = '" + payPeriod + "'", Con);
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
+                // Use parameterized query to prevent SQL injection
+                string query = "select count(*) from Paymentstbl where PMember = @PMember and PMonth = @PMonth";
+                SqlCommand cmd = new SqlCommand(query, Con);
+                cmd.Parameters.AddWithValue("@PMember", (int)NameCb.SelectedValue); // Use SelectedValue for the member ID
+                cmd.Parameters.AddWithValue("@PMonth", payPeriod);
 
-                if (dt.Rows[0][0].ToString() == "1")
+                SqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Read(); // Move to the first row (only one row is expected)
+                int existingPaymentCount = Convert.ToInt32(rdr[0]);
+                rdr.Close();
+
+                if (existingPaymentCount > 0)
                 {
                     MessageBox.Show("Already paid for this month");
                 }
                 else
                 {
-                    // Corrected INSERT query
-                    string query = "insert into Paymentstbl (PMonth, PMember, PAmount) values('" + payPeriod + "','" + NameCb.Text + "'," + Amounttb.Text + ")";
-                    SqlCommand cmd = new SqlCommand(query, Con);
+                    // Use parameterized query for the INSERT statement
+                    query = "insert into Paymentstbl (PMonth, PMember, PAmount) values(@PMonth, @PMember, @PAmount)";
+                    cmd = new SqlCommand(query, Con);
+                    cmd.Parameters.AddWithValue("@PMonth", payPeriod);
+                    cmd.Parameters.AddWithValue("@PMember", (int)NameCb.SelectedValue); // Again, use SelectedValue for the member ID
+                    cmd.Parameters.AddWithValue("@PAmount", Amounttb.Text);
+
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Amount paid successfully");
                 }
@@ -146,6 +161,7 @@ namespace GYM_YOUTUBE
                 populate();
             }
         }
+
 
         private void button4_Click(object sender, EventArgs e)
         {

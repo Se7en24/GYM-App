@@ -40,6 +40,7 @@ namespace GYM_YOUTUBE
 
         private void ViewMember_Load(object sender, EventArgs e)
         {
+            MembersList.ReadOnly = true;
             populate();
         }
 
