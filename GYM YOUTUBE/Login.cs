@@ -25,16 +25,16 @@ namespace GYM_YOUTUBE
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(userid.Text =="" ||  pswd.Text =="")
+            if (userid.Text == "" || pswd.Text == "")
             {
                 MessageBox.Show("Credentials cannot be empty");
             }
-            else if(userid.Text =="admin" &&  pswd.Text == "jinceaanudaivam")
-                {
-                    FrontPage frontPage = new FrontPage();
-                    frontPage.Show();
-                    this.Hide();
-                }
+            else if (userid.Text == "admin" && pswd.Text == "jinceaanudaivam")
+            {
+                FrontPage frontPage = new FrontPage();
+                frontPage.Show();
+                this.Hide();
+            }
             else
             {
                 MessageBox.Show("Wrong Credentials!!");
